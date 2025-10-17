@@ -1,0 +1,78 @@
+/* header.css */
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh; /* full height */
+	width: 220px; /* sidebar width */
+	background-color: #1e1e1e;
+	padding-top: 40px;
+	box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+    transform: translateX(-170px);
+    transition: transform 0.4s ease; 
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+nav li {
+	text-align: left;
+}
+
+nav a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-left: 3px solid transparent;
+	transition: background 0.3s, border-color 0.3s;
+}
+
+nav a:hover {
+	background-color: #333;
+	border-left-color: #4CAF50;
+}
+
+nav a.active {
+	background-color: #4CAF50;
+	border-left-color: #4CAF50;
+	color: #fff;
+}
+
+/* Optional: Add padding to page content so it’s not hidden behind the sidebar */
+body {
+	margin: 0;
+	padding-left: 220px;
+	font-family: Arial, sans-serif;
+	background: #f9f9f9;
+}
+
+/* Animation class */
+.bounce {
+	animation: bounce 0.5s ease;
+}
+
+/* Define keyframes for the motion */
+@keyframes bounce {
+	0%   { transform: scale(1); }
+	30%  { transform: scale(1.2); }
+	50%  { transform: scale(0.9); }
+	70%  { transform: scale(1.1); }
+	100% { transform: scale(1); }
+}
+
+nav:hover{
+    transform: translateX(0);
+}
+
+@keyframes slide_right {
+    0% {transform: translateX(-170px);}
+    100% {transform: translateX(0px);}
+}
