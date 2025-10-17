@@ -5,7 +5,8 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import Layout from './components/Layout'
 import Home from './pages/Home'
-
+import ProductList from './components/Header/ProductList/ProductList'
+import ProductInfo from './components/Header/ProductInfo/ProductInfo'
 
 const router = createBrowserRouter([
 	{
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
 		children:[
 			{
 				path: '/',
-				element: <Home />
+				element: <ProductList />
 			},
 			{
 				path: '/about',
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
 			{
 				path: '/contact',
 				element: <Contact />
+			},
+			{
+				path: "/product/:id",
+				element: <ProductInfo/>
 			},
 			{
 				path: '*',

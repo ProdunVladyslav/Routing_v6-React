@@ -1,0 +1,13 @@
+.productListWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.productListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1000px;
+  justify-content: center;
+}
