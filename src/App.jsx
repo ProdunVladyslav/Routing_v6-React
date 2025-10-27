@@ -1,48 +1,93 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route, createBrowserRouter, RouterProvider } from 'react-router-dom'
-import NotFound from './pages/NotFound'
-import Contact from './pages/Contact'
-import About from './pages/About'
-import Layout from './components/Layout'
-import Home from './pages/Home'
-import ProductList from './components/Header/ProductList/ProductList'
-import ProductInfo from './components/Header/ProductInfo/ProductInfo'
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import NotFound from './pages/NotFound';
+import Contact from './pages/Contact';
+import About from './pages/About';
+import Layout from './components/Layout';
+import ProductList from './components/Header/ProductList/ProductList.tsx';
+import ProductInfo from './components/Header/ProductInfo/ProductInfo';
+
+import LoginPage from './components/AuthForms/LoginPage/LoginPage';
+import RegisterPage from './components/AuthForms/RegisterPage/RegisterPage';
+import ProtectedRoute from './helpers/ProtectedRoute';
+import AdminPage from './pages/AdminPage/AdminPage';
+import { GoodsProvider } from './contexts/GoodContext';
+import { AuthProvider } from './contexts/AuthContext.tsx';
 
 const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <Layout />,
-		children:[
-			{
-				path: '/',
-				element: <ProductList />
-			},
-			{
-				path: '/about',
-				element: <About />
-			},
-			{
-				path: '/contact',
-				element: <Contact />
-			},
-			{
-				path: "/product/:id",
-				element: <ProductInfo/>
-			},
-			{
-				path: '*',
-				element: <NotFound />
-			}
-		]
-	}
-])
+  {
+    path: '/',
+    element: <Layout />, // <-- Layout wraps everything, including login/register
+    children: [
+      // Public routes
+      {
+        path: '/login',
+        element: <LoginPage />,
+      },
+      {
+        path: '/register',
+        element: <RegisterPage />,
+      },
+
+      // Protected routes
+      {
+        path: '/',
+        element: (
+          <ProtectedRoute>
+            <ProductList />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/about',
+        element: (
+          <ProtectedRoute>
+            <About />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/contact',
+        element: (
+          <ProtectedRoute>
+            <Contact />
+          </ProtectedRoute>
+        ),
+      },
+	  {
+        path: '/admin-page',
+        element: (
+          <ProtectedRoute adminEnabled>
+			<AdminPage/>
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/product/:id',
+        element: (
+          <ProtectedRoute>
+            <ProductInfo />
+          </ProtectedRoute>
+        ),
+      },
+
+      // Fallback
+      {
+        path: '*',
+        element: <NotFound />,
+      },
+    ],
+  },
+]);
 
 function App() {
-	return (
-		<>
-			<RouterProvider router={router}/>
-		</>
-	)
+  return (
+    <AuthProvider>
+      <GoodsProvider>
+        <RouterProvider router={router} />
+      </GoodsProvider>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;

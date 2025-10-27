@@ -1,0 +1,145 @@
+/* Page wrapper centers the card */
+.auth-page-wrapper {
+  min-height: 100vh;
+  background-color: #0f0f0f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+  width:100%;
+}
+
+/* Card */
+.auth-card {
+  background-color: #1e1e1e;
+  border: 2px solid #4CAF50;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 360px;
+  padding: 32px 28px;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Title + subtext */
+.auth-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.auth-sub {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #9ad79a;
+  line-height: 1.4;
+}
+
+/* Form layout */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Labels */
+.auth-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: #e0ffe0;
+  gap: 6px;
+}
+
+/* Inputs */
+.auth-input {
+  background-color: #2a2a2a;
+  border: 1px solid #4CAF50;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  color: #fff;
+  outline: none;
+  transition: box-shadow 0.2s ease, border 0.2s ease;
+}
+
+.auth-input:focus {
+  border-color: #6dfc6d;
+  box-shadow: 0 0 8px rgba(109, 252, 109, 0.6);
+}
+
+/* Checkbox row */
+.auth-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #cfeccc;
+  user-select: none;
+}
+
+.auth-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #4CAF50; /* works in modern browsers */
+  cursor: pointer;
+}
+
+/* Button */
+.auth-button {
+  background-color: #4CAF50;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.1s ease;
+}
+
+.auth-button:hover {
+  background-color: #5dd85d;
+  box-shadow: 0 0 12px rgba(93, 216, 93, 0.6);
+  transform: translateY(-2px);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+/* Message from reducer (success / error) */
+.auth-message {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid #4CAF50;
+  color: #cfeccc;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 10px 12px;
+  border-radius: 4px;
+  word-break: break-word;
+}
+
+/* Link under form */
+.auth-alt-link {
+  font-size: 0.8rem;
+  color: #9ad79a;
+  text-align: center;
+}
+
+.auth-alt-link a {
+  color: #6dfc6d;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-alt-link a:hover {
+  text-decoration: underline;
+}

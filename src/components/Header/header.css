@@ -1,18 +1,20 @@
-/* header.css */
 nav {
 	position: fixed;
 	top: 0;
 	left: 0;
-	height: 100vh; /* full height */
-	width: 220px; /* sidebar width */
+	height: calc(100vh - 60px);
+	width: 220px;
 	background-color: #1e1e1e;
-	padding-top: 40px;
+	padding: 40px 0 20px;
 	box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
-    transform: translateX(-170px);
-    transition: transform 0.4s ease; 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between; /* pushes footer down */
+	transition: transform 0.4s ease;
+	transform: translateX(0); /* always visible */
 }
 
-nav ul {
+.nav-links {
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -46,33 +48,40 @@ nav a.active {
 	color: #fff;
 }
 
-/* Optional: Add padding to page content so it’s not hidden behind the sidebar */
+/* Bottom user section */
+.nav-footer {
+	/* padding: 20px; */
+	border-top: 1px solid #333;
+	text-align: center;
+}
+
+.username {
+	color: #aaa;
+	margin-bottom: 8px;
+	font-size: 0.9rem;
+}
+
+.logout-btn {
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+	background-color: #45a049;
+}
+
+/* optional padding for content */
 body {
 	margin: 0;
-	padding-left: 220px;
 	font-family: Arial, sans-serif;
 	background: #f9f9f9;
 }
 
-/* Animation class */
-.bounce {
-	animation: bounce 0.5s ease;
-}
-
-/* Define keyframes for the motion */
-@keyframes bounce {
-	0%   { transform: scale(1); }
-	30%  { transform: scale(1.2); }
-	50%  { transform: scale(0.9); }
-	70%  { transform: scale(1.1); }
-	100% { transform: scale(1); }
-}
-
-nav:hover{
-    transform: translateX(0);
-}
-
-@keyframes slide_right {
-    0% {transform: translateX(-170px);}
-    100% {transform: translateX(0px);}
+main{
+	width: 100%;
 }
