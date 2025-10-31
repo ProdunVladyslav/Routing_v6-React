@@ -19,6 +19,7 @@ function Header() {
 					<li><NavLink to="/">Home</NavLink></li>
 					<li><NavLink to="/about">About</NavLink></li>
 					<li><NavLink to="/contact">Contact</NavLink></li>
+					<li><NavLink to="/cart">Cart</NavLink></li>
 					{user.isAdmin ? <li><NavLink to="/admin-page">Admin Page</NavLink></li>:""}
 				</ul>
 

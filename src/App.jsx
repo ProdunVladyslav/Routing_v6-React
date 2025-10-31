@@ -13,6 +13,8 @@ import ProtectedRoute from './helpers/ProtectedRoute';
 import AdminPage from './pages/AdminPage/AdminPage';
 import { GoodsProvider } from './contexts/GoodContext';
 import { AuthProvider } from './contexts/AuthContext.tsx';
+import { CartProvider } from './contexts/CartContext.tsx';
+import CartPage from './pages/CartPage/CartPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -70,6 +72,14 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: '/cart',
+        element: (
+          <ProtectedRoute>
+            <CartPage />
+          </ProtectedRoute>
+        ),
+      },
 
       // Fallback
       {
@@ -84,7 +94,9 @@ function App() {
   return (
     <AuthProvider>
       <GoodsProvider>
-        <RouterProvider router={router} />
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
       </GoodsProvider>
     </AuthProvider>
   );

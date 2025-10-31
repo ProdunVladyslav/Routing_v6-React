@@ -8,6 +8,7 @@ export type Good = {
   price: number;
   currency: string; 
   description?: string;
+  image_url?: string;
 };
 
 // The shape of our reducer state
@@ -72,8 +73,6 @@ export function goodsReducer(
       );
       localStorage.setItem(KEY, JSON.stringify(filteredGoods));
       return { ...state, goods: filteredGoods };
-
-
     }
 
     default:

@@ -32,6 +32,10 @@ body {
   text-shadow: 0 0 6px rgba(0,255,102,0.5);
 }
 
+.padding-right{
+  width: calc(100% - 30px) !important;
+}
+
 /* ===================== */
 /* Form grid + fields    */
 /* ===================== */
@@ -169,7 +173,6 @@ main{
 }
 
 .good-row:hover {
-  transform: translateY(-3px);
   box-shadow: 0 0 20px rgba(0,255,102,0.6), 0 0 40px rgba(0,255,102,0.15);
 }
 

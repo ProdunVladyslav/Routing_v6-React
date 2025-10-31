@@ -9,6 +9,7 @@ type GoodFormState = {
   price: string;
   description: string;
   currency: string;
+  image_url: string;
 };
 
 function AdminPage() {
@@ -20,6 +21,7 @@ function AdminPage() {
     price: "",
     description: "",
     currency: "USD", // default instead of empty
+    image_url: ""
   });
 
   // Derived validation: are required fields filled in?
@@ -43,6 +45,7 @@ function AdminPage() {
               : "",
           description: editing.description ?? "",
           currency: editing.currency ?? "USD",
+          image_url: editing.image_url ?? ""
         });
       }
     } else {
@@ -53,6 +56,7 @@ function AdminPage() {
         price: "",
         description: "",
         currency: "USD",
+        image_url: ""
       });
     }
   }, [state.editingGoodIndex, state.goods]);
@@ -80,6 +84,7 @@ function AdminPage() {
           price: Number(good.price) || 0,
           currency: good.currency,
           description: good.description,
+          image_url: good.image_url
         },
       });
     } else {
@@ -92,6 +97,7 @@ function AdminPage() {
           price: Number(good.price) || 0,
           currency: good.currency,
           description: good.description,
+          image_url: good.image_url
         },
       });
     }
@@ -103,6 +109,7 @@ function AdminPage() {
       price: "",
       description: "",
       currency: "USD",
+      image_url: ""
     });
   };
 
@@ -119,7 +126,7 @@ function AdminPage() {
           <div className="form-field">
             <label className="form-label">Name *</label>
             <input
-              className="form-input"
+              className="form-input "
               name="name"
               placeholder="Name"
               value={good.name}
@@ -170,6 +177,17 @@ function AdminPage() {
               name="description"
               placeholder="Short description"
               value={good.description}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-field form-field-full">
+            <label className="form-label">Image Url *</label>
+            <input
+              className="form-input"
+              name="image_url"
+              placeholder="Image Url"
+              value={good.image_url}
               onChange={handleChange}
             />
           </div>
