@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../contexts/AuthContext";
+import { useCart } from "../../../contexts/CartContext";
 import "../AuthForms.css";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const { state, dispatch } = useAuth();
-  const navigate = useNavigate()
+  const { dispatch: cartsDispatch } = useCart(); 
+  const navigate = useNavigate();
 
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if(state.message === "Successfully logged in as admin" ||
-      state.message === "Successfully logged in as user"
-    ){
-      navigate("/")
+    const success =
+      state.message === "Successfully logged in as admin" ||
+      state.message === "Successfully logged in as user";
+
+    if (success) {
+      cartsDispatch({ type: "RELOAD_USER" });
+      navigate("/");
     }
-  }, [state.message])
+  }, [state.message, cartsDispatch, navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

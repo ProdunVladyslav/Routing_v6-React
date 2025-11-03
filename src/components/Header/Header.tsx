@@ -2,13 +2,16 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.css";
 import { useAuth } from "../../contexts/AuthContext"
+import { useCart } from "../../contexts/CartContext";
 
 function Header() {
   const { state, dispatch } = useAuth();
+  const { dispatch: cartsDispatch } = useCart();
   const user = state.loggedInUser;
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
+	cartsDispatch({ type: "RELOAD_USER" });
   };
 
   return (

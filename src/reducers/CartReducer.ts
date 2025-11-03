@@ -3,6 +3,7 @@ import { getLoggedInUserId } from "../helpers/authHelper";
 // --- Compute per-user localStorage key ---
 function computeCartKey() {
   const userId = getLoggedInUserId();
+  console.log(userId);
   return userId ? `cart:${userId}` : "cart:guest";
 }
 
@@ -15,7 +16,8 @@ export interface CartsState {
 export type CartsAction =
   | { type: "ADD_GOOD_TO_CART"; id: string }
   | { type: "DELETE_GOOD_FROM_CART"; id: string }
-  | { type: "CLEAR_CART" };
+  | { type: "CLEAR_CART" }
+  | { type: "RELOAD_USER" };
 
 // --- Helpers ---
 function loadGoodIDs(): string[] {
@@ -41,9 +43,8 @@ export function cartsReducer(
   state: CartsState,
   action: CartsAction
 ): CartsState {
-   switch (action.type) {
+  switch (action.type) {
     case "ADD_GOOD_TO_CART": {
-      // remove if already exists, then re-add (so it stays unique)
       const updated = [
         ...state.goodIDsAddedToCart.filter((x) => x !== action.id),
         action.id,
@@ -62,6 +63,11 @@ export function cartsReducer(
     case "CLEAR_CART": {
       localStorage.removeItem(computeCartKey());
       return { ...state, goodIDsAddedToCart: [] };
+    }
+
+    case "RELOAD_USER": {
+      const reloaded = loadGoodIDs();
+      return { ...state, goodIDsAddedToCart: reloaded };
     }
 
     default:
