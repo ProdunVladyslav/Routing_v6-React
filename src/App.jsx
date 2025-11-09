@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import NotFound from './pages/NotFound';
-import Contact from './pages/Contact';
-import About from './pages/About';
+import Contact from './pages/Contact/Contact.jsx';
+import About from './pages/About/About.jsx';
 import Layout from './components/Layout';
 import ProductList from './components/Header/ProductList/ProductList.tsx';
 import ProductInfo from './components/Header/ProductInfo/ProductInfo';
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
         path: '/admin-page',
         element: (
           <ProtectedRoute adminEnabled>
-			<AdminPage/>
+			      <AdminPage/>
           </ProtectedRoute>
         ),
       },
